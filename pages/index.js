@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 const API = "http://www.omdbapi.com/";
 export async function getServerSideProps() {
   const res = await fetch(
-    `${API}?apikey=${process.env.OMDB_API_KEY}&s=harry+potter`
+    `${API}?apikey=dca61bcc&s=harry+potter`
   );
   const movies = await res.json();
   return {
