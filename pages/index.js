@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Item from "../component/item";
 import styles from "../styles/Home.module.css";
 
 const API = "http://www.omdbapi.com/";
@@ -15,7 +16,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ movies }) {
-  console.log("Data ", movies.Search);
   return (
     <div className={styles.container}>
       <Head>
@@ -32,13 +32,14 @@ export default function Home({ movies }) {
         </p>
 
         <div className={styles.grid}>
-          {movies.Search.map((movie) => {
+          {movies.Search.map((movie, index) => {
             return (
-              <div className={styles.card} key={movie.imdbID}>
-                <img src={movie.Poster} alt={movie.Title} />
-                <h4> {movie.Title} </h4>
-                <p>Year : {movie.Year} </p>
-              </div>
+              <Item
+                key={index}
+                poster={movie.Poster}
+                title={movie.Title}
+                year={movie.Year}
+              />
             );
           })}
         </div>
